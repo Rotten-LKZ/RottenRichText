@@ -2,7 +2,8 @@
 /.pnp
 .pnp.js
 /coverage
-/builds
+/src
+/public
 .DS_Store
 .env.local
 .env.development.local

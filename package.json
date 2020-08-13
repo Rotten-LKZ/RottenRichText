@@ -2,7 +2,12 @@
   "name": "rotten-rich-text",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "main": "build/main.js",
+  "author": "Rotten_LKZ",
+  "keywords": ["rich_text", "richtext", "rotten_lkz", "lkz", "react"],
+  "repository": "https://github.com/Rotten-LKZ/RottenRichText",
+  "readme": "",
+  "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
