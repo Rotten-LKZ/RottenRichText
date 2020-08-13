@@ -1,31 +1,37 @@
-import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBold } from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from 'react';
+import Title from './Title';
+import Functions from './Functions';
 
 export default class Editor extends Component {
   constructor(props) {
     super(props);
-    let { title, titleMaxLength } = this.props;
+    let { title, titleMaxLength, functions } = this.props;
 
-    // 默认最多40字
-    if (titleMaxLength === undefined) {
-      titleMaxLength = 40;
-    }
-    titleMaxLength = parseInt(titleMaxLength);
-
-    let nowTitleLength = 0;
-    // 如果传入标题则检测标题字数
-    if (title !== undefined) {
-      nowTitleLength = title.length;
-    }
+    // TODO: 自定义配置
+    const defaultFunctions = [
+      [
+        ["rotten:header"], ["rotten:bold"], ["rotten:strikethrough"]
+      ], 
+      [
+        ["rotten:size"], ["rotten:color"]
+      ],
+      [
+        ["rotten:quote"], ["rotten:separator"], ["rotten:align"], ["rotten:list"]
+      ],
+      [
+        ["rotten:url"], ["rotten:image"], ["bilibili:url"],
+      ]
+    ]
+    functions = functions === undefined ? defaultFunctions : functions;
 
     this.state = {
       // 用户传递
       title: title === undefined ? "" : title,
       titleMaxLength: titleMaxLength,
+      functions: functions,
 
       // 程序新增
-      nowTitleLength: nowTitleLength,
+
     };
 
     this.changeTitle = this.changeTitle.bind(this);
@@ -34,37 +40,20 @@ export default class Editor extends Component {
   render() {
     return (
       <div className="editor">
-        <div className="editor-title">
-          <textarea 
-            type="text"
-            placeholder={this.props.placeholder === undefined ? "" : this.props.placeholder} 
-            value={this.state.title}
-            onChange={this.changeTitle}
-            onKeyPress={this.titleKeyPress}
-          />
-          <div className="font-grey editor-title-words">{this.state.nowTitleLength}/{this.state.titleMaxLength}</div>
-        </div>
-        <div className="editor-function">
-          <FontAwesomeIcon icon={faBold} />
-        </div>
+        <Title 
+          placeholder={this.props.placeholder === undefined ? "" : this.props.placeholder} 
+          title={this.state.title}
+          titleMaxLength={this.state.titleMaxLength}
+          setTitle={this.changeTitle}
+        />
+        <Functions f={this.state.functions} />
       </div>
     )
   }
 
-  changeTitle(e) {
-    let title = e.target.value;
-    // 如果当前标题的长度小于等于设置的最大长度则允许输入
-    if (title.length <= this.state.titleMaxLength) {
-      this.setState({
-        title: title,
-        nowTitleLength: title.length,
-      });
-    }
-  }
-
-  titleKeyPress(e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-    }
+  changeTitle(title) {
+    this.setState({
+      title: title,
+    });
   }
 }

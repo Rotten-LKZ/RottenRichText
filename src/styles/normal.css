@@ -41,8 +41,35 @@
 }
 
 /* the function part of editor */
-.editor-function{
-  height: 42px;
+.editor-function {
   width: 100%;
   background-color: #f1f3f7;
+}
+
+.editor-function .toolbar-item {
+  display: inline-block;
+  height: 37px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 1.3rem;
+  text-align: center;
+  padding-top: 5px;
+  font-style: normal;
+}
+
+.editor-function .has-children::after {
+  content: "";
+  display: inline-block;
+  margin-top: 10px;
+  width: 0;
+  height: 0;
+  border-bottom: 4px solid #333;
+  border-left: 4px solid transparent;
+}
+
+.editor-function .cut-off {
+  height: 42px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-left: 3px solid #fff;
 }
