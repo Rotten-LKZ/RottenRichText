@@ -1,0 +1,48 @@
+
+/* global */
+.font-grey {
+  color: grey;
+}
+
+/* the editor part of global */
+.editor {
+  width: 100%;
+}
+
+/* the title part of editor */
+.editor-title textarea {
+  height: 64px;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  appearance: textarea;
+  cursor: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font: inherit;
+  overflow-y: hidden;
+  vertical-align: top;
+  display: inline-block;
+  outline: none;
+  border: none;
+  resize: none;
+  width: 88%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.editor-title .editor-title-words {
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+}
+
+/* the function part of editor */
+.editor-function{
+  height: 42px;
+  width: 100%;
+  background-color: #f1f3f7;
+}
